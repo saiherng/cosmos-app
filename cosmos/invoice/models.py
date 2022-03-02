@@ -8,38 +8,14 @@ class Customer(models.Model):
 
     name = models.CharField(max_length=50)
     phone_number = models.IntegerField()
+    email = models.EmailField(default="")
     address = models.CharField(max_length=100)
 
-    @property
-    def getName(self):
-        return str(self.name)
+    class Meta:
+        ordering = ['name']
 
     def __str__(self):
-        return str(self.name)
-
-
-class Invoice(models.Model):
-
-    KPAY = "K"
-    CASH = "C"
-
-    PAYMENT_TYPE = [
-        (KPAY, 'KP'),
-        (CASH, 'Cash'),
-    ]
-
-    customer = models.ForeignKey(Customer, on_delete=models.PROTECT)
-    date = DateField()
-    items = models.ManyToManyField(
-        'Product',
-        related_name='carts')
-
-    payment = models.CharField(max_length=1, choices=PAYMENT_TYPE)
-    payment_id = models.CharField(max_length=20, default='cash')
-
-    @property
-    def __str__(self):
-        return self.customer
+        return self.name
 
 
 class Product(models.Model):
@@ -67,11 +43,35 @@ class Product(models.Model):
     name = models.CharField(max_length=2, choices=PRODUCT)
     price = models.IntegerField(default=0)
     quantity = models.IntegerField(default=0)
+    #invoice = models.ForeignKey(Invoice, on_delete=models.CASCADE)
     #description = models.CharField(max_length=200, default='', null=True, blank=True)
 
-    @property
-    def getName(self):
-        return str(self.name)
+    class Meta:
+        ordering = ['name']
 
     def __str__(self):
         return self.name
+
+class Invoice(models.Model):
+
+    KPAY = "K"
+    CASH = "C"
+
+    PAYMENT_TYPE = [
+        (KPAY, 'KP'),
+        (CASH, 'Cash'),
+    ]
+
+    customer = models.ForeignKey(Customer, on_delete=models.PROTECT)
+    date = DateField()
+    items = models.ManyToManyField(Product)
+
+    payment = models.CharField(max_length=1, choices=PAYMENT_TYPE)
+    payment_id = models.CharField(max_length=20, default='cash')
+
+
+    class Meta:
+        ordering = ['customer']
+
+    def __str__(self):
+        return self.customer.name
