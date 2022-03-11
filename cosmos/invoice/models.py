@@ -2,7 +2,6 @@
 from django.db import models
 
 
-
 class Customer(models.Model):
 
     name = models.CharField(max_length=255)
@@ -39,12 +38,13 @@ class Product(models.Model):
         (FLORAL, 'Floral'),
     ]
 
-    name = models.CharField(max_length=2, choices=PRODUCT) 
-    description = models.CharField(max_length=200, default='', null=True, blank=True)
-
+    name = models.CharField(max_length=2, choices=PRODUCT)
+    description = models.CharField(
+        max_length=200, default='', null=True, blank=True)
 
     def __str__(self):
         return self.name
+
 
 class Invoice(models.Model):
 
@@ -59,22 +59,26 @@ class Invoice(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.PROTECT)
     placed_at = models.DateTimeField(auto_now_add=True)
 
-    payment = models.CharField(max_length=1, choices=PAYMENT_TYPE, default=CASH)
+    payment = models.CharField(
+        max_length=1, choices=PAYMENT_TYPE, default=CASH)
     payment_account = models.CharField(max_length=20, default='cash')
 
     def __str__(self):
         return self.customer
 
+
 class InvoiceItem(models.Model):
-    
+
     invoice = models.ForeignKey(Invoice, on_delete=models.PROTECT)
     product = models.ForeignKey(Product, on_delete=models.PROTECT)
     quantity = models.PositiveSmallIntegerField()
-    unit_price = models.IntegerField()    
+    unit_price = models.IntegerField()
+
 
 class Cart(models.Model):
-    
+
     created_at = models.DateTimeField(auto_now_add=True)
+
 
 class CartItem(models.Model):
 
