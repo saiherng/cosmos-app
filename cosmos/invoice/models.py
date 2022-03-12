@@ -18,14 +18,14 @@ class Customer(models.Model):
 
 class Product(models.Model):
 
-    SAKURA = 'SK'
-    ROMANCE = 'RM'
-    JUICY = 'JY'
-    INTRICATE = 'IE'
-    DESTINY = 'DY'
-    HONEY = 'HY'
-    PL = 'PL'
-    FLORAL = 'FL'
+    SAKURA = 'Sakura'
+    ROMANCE = 'Romance'
+    JUICY = 'Juicy'
+    INTRICATE = 'Intricate'
+    DESTINY = 'Destiny'
+    HONEY = 'Honey'
+    PL = 'Pl'
+    FLORAL = 'Floral'
 
     PRODUCT = [
         (SAKURA, 'Sakura'),
@@ -38,7 +38,7 @@ class Product(models.Model):
         (FLORAL, 'Floral'),
     ]
 
-    name = models.CharField(max_length=2, choices=PRODUCT)
+    name = models.CharField(max_length=20, choices=PRODUCT)
     description = models.CharField(
         max_length=200, default='', null=True, blank=True)
 
@@ -64,7 +64,7 @@ class Invoice(models.Model):
     payment_account = models.CharField(max_length=20, default='cash')
 
     def __str__(self):
-        return self.customer
+        return str(self.pk) + "-" + str(self.customer)
 
 
 class InvoiceItem(models.Model):
@@ -73,6 +73,9 @@ class InvoiceItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.PROTECT)
     quantity = models.PositiveSmallIntegerField()
     unit_price = models.IntegerField()
+
+    def __str__(self):
+        return str(self.product)
 
 
 class Cart(models.Model):
