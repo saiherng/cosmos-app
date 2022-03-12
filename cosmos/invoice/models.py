@@ -62,6 +62,7 @@ class Invoice(models.Model):
     payment = models.CharField(
         max_length=1, choices=PAYMENT_TYPE, default=CASH)
     payment_account = models.CharField(max_length=20, default='cash')
+    
 
     def __str__(self):
         return str(self.pk) + "-" + str(self.customer)
@@ -73,6 +74,10 @@ class InvoiceItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.PROTECT)
     quantity = models.PositiveSmallIntegerField()
     unit_price = models.IntegerField()
+
+    
+
+    
 
     def __str__(self):
         return str(self.product)

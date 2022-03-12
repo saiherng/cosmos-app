@@ -125,11 +125,22 @@
             </tr>
           </thead>
           <tbody>
+            {% for invoice in invoices %}
             <tr>
-              <td>{{invoice}}</td>
-              <td>{{invoice.placed_at</td>
-              <td>{{customer}}</td>
-              <td>09989895558</td>
+              <td>{{invoice.id}}</td>
+              <td>{{invoice.placed_at}}</td>
+              <td>{{invoice.customer}}</td>
+              <td>{{invoice.customer.phone_number}}</td>
+              <td>{{sakura}}</td>
+              <td>{{romance}}</td>
+              <td>{{juicy}}</td>
+              <td>{{intricate}}</td>
+              <td>{{destiny}}</td>
+              <td>{{honey}}</td>
+              <td>{{pl}}</td>
+              <td>{{floral}}</td>
+              <td>{{total}} Kyats</td>
+              <td>{{invoice.payment}}-{{invoice.payment_account}}</td>
               <td>1</td>
               <td>1</td>
               <td>1</td>
@@ -137,69 +148,9 @@
               <td>1</td>
               <td>1</td>
               <td>1</td>
-              <td>1</td>
-              <td>$100</td>
-              <td>KPay - 10111</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              
+              <td>1</td>            
             </tr>
-            <tr>
-                <td>1,001</td>
-                <td>Feb 19, 2022</td>
-                <td>Sai Herng</td>
-                <td>09989895558</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>$100</td>
-                <td>KPay - 10111</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                
-              </tr>
-              <tr>
-                <td>1,001</td>
-                <td>Feb 19, 2022</td>
-                <td>Sai Herng</td>
-                <td>09989895558</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>$100</td>
-                <td>KPay - 10111</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                
-              </tr>
+          {% endfor %}
           </tbody>
         </table>
       </div>
