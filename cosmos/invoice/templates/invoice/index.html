@@ -71,7 +71,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/products">
               <span data-feather="shopping-cart"></span>
               Products
             </a>
@@ -99,7 +99,7 @@
         <table class="table table-striped table-sm">
           <thead>
             <tr>
-              <th scope="col">Invoice ID</th>
+              <th scope="col">ID</th>
               <th scope="col">Date</th>
               <th scope="col">Customer</th>
               <th scope="col">Phone Number</th>
@@ -113,42 +113,23 @@
               <th scope="col">Floral</th>
               <th scope="col">Total</th>
               <th scope="col">Payment</th>
-              <th scope="col">Sakura</th>
-              <th scope="col">Romance</th>
-              <th scope="col">Juicy</th>
-              <th scope="col">Intricate</th>
-              <th scope="col">Destiny</th>
-              <th scope="col">Honey</th>
-              <th scope="col">PL</th>
-              <th scope="col">Floral</th>
+          
 
             </tr>
           </thead>
           <tbody>
-            {% for invoice in invoices %}
+            {% for invoice,product in invoices %}
             <tr>
-              <td>{{invoice.id}}</td>
-              <td>{{invoice.placed_at}}</td>
-              <td>{{invoice.customer}}</td>
-              <td>{{invoice.customer.phone_number}}</td>
-              <td>{{sakura}}</td>
-              <td>{{romance}}</td>
-              <td>{{juicy}}</td>
-              <td>{{intricate}}</td>
-              <td>{{destiny}}</td>
-              <td>{{honey}}</td>
-              <td>{{pl}}</td>
-              <td>{{floral}}</td>
-              <td>{{total}} Kyats</td>
-              <td>{{invoice.payment}}-{{invoice.payment_account}}</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>            
+              <td scope="col">{{invoice.id}}</td>
+              <td scope="col">{{invoice.placed_at}}</td>
+              <td scope="col">{{invoice.customer}}</td>
+              <td scope="col">{{invoice.customer.phone_number}}</td>
+              {% for key,item in product.items %}
+              <td scope="col">{{item}}</td>
+              {% endfor %}
+              
+              <td scope="col">{{invoice.payment}}-{{invoice.payment_account}}</td>
+           
             </tr>
           {% endfor %}
           </tbody>

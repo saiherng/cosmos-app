@@ -20,7 +20,7 @@ class InvoiceAdmin(admin.ModelAdmin):
 
 @ admin.register(InvoiceItem)
 class InvoiceItemAdmin(admin.ModelAdmin):
-    list_display = ['invoice', 'product', 'quantity', 'unit_price']
+    list_display = ['invoice','product', 'quantity', 'unit_price']
     list_filter = ['invoice']
 
 
