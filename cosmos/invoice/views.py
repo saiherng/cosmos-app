@@ -68,22 +68,14 @@ def create_invoice(request):
 def create_customer(request):
 
     if request.method == 'POST':
-        form = CustomerForm(request.POST)
 
-        if form.is_valid():
-            f_name = form.cleaned_data['f_name']
-            f_phone_number = form.cleaned_data['f_phone_number']
-            f_email = form.cleaned_data['f_email']
-            f_address = form.cleaned_data['f_address']
+        customer_form = CustomerForm(request.POST)
 
-            print(f_name)
-            customer = Customer(name=f_name, phone_number=f_phone_number,
-                                email=f_email, address=f_address)
-            customer.save()
+        if customer_form.is_valid():
+            customer_form.save()
+        return HttpResponse("Success")
 
-            return HttpResponse("Success")
-
-    return render(request, 'invoice/invoice.html', {'form': form})
+    return render(request, 'invoice/invoice.html', {'customer_form': customer_form})
 
 
 def display_products(request):

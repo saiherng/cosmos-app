@@ -94,21 +94,17 @@
       <div>
         <form action="/create-customer/" method="post">
 
-        {% csrf_token %}
-        <label for="f_name">Name: </label>
-        <input id="f_name" type="text" name="f_name" maxlength="100" required>
-        <br>
-        <label for="f_phone_number">Phone Number: </label>
-        <input id="f_phone_number" type="text" name="f_phone_number" maxlength="100" required>
-        <br>
-        <label for="f_email">Email: </label>
-        <input id="f_email" type="text" name="your_email" maxlength="100" required>
-        <br>
-        <label for="f_address">Address: </label>
-        <input id="f_address" type="text" name="f_address" maxlength="100" required>
-        <br>
-        <input type="submit" value="Submit">
-        
+          {% csrf_token %}
+          <label for="name">Your name: </label>
+          <input id="name" type="text" name="name" maxlength="100" required>  
+          <label for="phone_number">Your number: </label>
+          <input id="phone_number" type="text" name="phone_number" maxlength="100" required>
+          <label for="email">Your email: </label>
+          <input id="email" type="text" name="email" maxlength="100" required>  
+          <label for="address">Your address: </label>
+          <input id="address" type="text" name="address" maxlength="100" required>
+          
+          <input type="submit" value="Submit">
 
       </form>
       
