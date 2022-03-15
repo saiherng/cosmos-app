@@ -21,7 +21,7 @@ class InvoiceAdmin(admin.ModelAdmin):
 @ admin.register(InvoiceItem)
 class InvoiceItemAdmin(admin.ModelAdmin):
     list_display = ['invoice','product', 'quantity', 'unit_price']
-    list_filter = ['invoice']
+    list_filter = ['invoice','product']
 
 
 @ admin.register(Product)

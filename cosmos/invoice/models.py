@@ -66,8 +66,6 @@ class Invoice(models.Model):
     def __str__(self):
         return str(self.pk) + "-" + str(self.customer)
 
-    
-
 
 class InvoiceItem(models.Model):
 
@@ -76,7 +74,6 @@ class InvoiceItem(models.Model):
     quantity = models.PositiveSmallIntegerField()
     unit_price = models.IntegerField()
 
-    
     def __str__(self):
         return str(self.product)
 
